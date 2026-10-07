@@ -1,0 +1,157 @@
+﻿namespace VariablesAndDatatypes
+{
+    class Program
+    {
+        static void Main()
+        {
+            // ---- Task 1: variables and interpolated strings ----
+
+            // TODO 1: declare a variable called userName that holds your name.
+            //         Text needs the type string.
+            string userName = "userUserUSer";
+
+            // TODO 2: declare a variable called luckyNumber holding your
+            //         favourite single-digit number. A whole number is int.
+            int luckyNumber = 2;
+
+            // TODO 3: print ONE line that reads exactly:
+            //         Hello, <your name>! Your lucky number is <the number>.
+            Console.WriteLine($"Hello {userName}! Your lucky number is {luckyNumber} ");
+            //         Use string interpolation, not the + operator.
+
+            // ---- Task 2: constants ----
+            Circle circle = new Circle();
+            Console.WriteLine($"PI = {Circle.PI}");
+            // Circle.PI = 3.15;
+            Console.WriteLine($"Area (r=2) = {circle.Area(2)}");
+            Console.WriteLine($"Perimeter (r=2) = {circle.Perimeter(2)}");
+
+            // ---- Task 3: data types and type conversion ----
+
+            byte tiny = 200;
+            short small = 30000;
+
+            // TODO 4: declare one variable for each of these types and give
+            //         it a sensible value:
+            //             int, long, float, double, decimal, char, bool
+            int age = 20;
+            long randomNum = 21345234;
+            float income = 100.1f;
+            double atoms = 23440.34;
+            decimal deciNum = 2345.234m;
+            char initial = 'P';
+            bool isGOAT = true;
+
+            // TODO 5: convert the number 42 into a string, storing the //         result in a new variable.
+            int number = 42;
+            string numToString = number.ToString();
+
+            // TODO 6: convert the string "3.14" into a double, storing the
+            //         result in a new variable.
+            string pi = "3.14";
+            double stringToDouble = Convert.ToDouble(pi);
+
+            // These two lines are done for you as a model.
+            Console.WriteLine($"byte   = {tiny}      (type: byte)");
+            Console.WriteLine($"short  = {small}     (type: short)");
+
+            // TODO 7: print one labelled line for each of the remaining
+            //         variables, including the two you converted.
+            //         Keep the spacing so the columns line up.
+            Console.WriteLine($"number   = {numToString}      (type: string)");
+            Console.WriteLine($"pi  = {stringToDouble}     (type: double)");
+
+            // ---- Task 4: arrays and Array methods ----
+            int[] numbers = { 42, 7, 19, 3, 88 };
+
+            // TODO 8: print the numbers in their original order on one
+            //         line, separated by commas.
+            Console.WriteLine($"Original : {string.Join(", ", numbers)}");
+
+            // TODO 9: sort them ascending with Array.Sort, then print the
+            //         line again.
+            Array.Sort(numbers);
+            Console.WriteLine($"Sorted Array: {string.Join(",", numbers)}");
+
+
+            // TODO 10: reverse them with Array.Reverse, then print again.
+            Array.Reverse(numbers);
+            Console.WriteLine($"reverseed array: {string.Join(",", numbers)}");
+
+            // TODO 11: print each element on its own line using a for loop,
+            //          showing the index as well as the value.
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                Console.WriteLine($" [{i}]  {numbers[i]}");
+            }
+
+
+            // TODO 12: use Array.IndexOf to find the position of 19 and
+            //          print it. Then look up 100 and print that too.
+            Console.WriteLine(Array.IndexOf(numbers, 19));
+
+
+            // ---- Task 5: DateTime and TimeSpan ----
+            DateTime birthDate = new DateTime(2004, 3, 15);
+
+            // TODO 13: declare a DateTime holding the current date and time,
+            //          called today.
+            DateTime today = DateTime.Now;
+
+            // TODO 14: subtract birthDate from today. The result is a
+            //          TimeSpan — name it ageSpan.
+            //          Subtracting two DateTimes gives you a TimeSpan, so
+            //          there is nothing to convert explicitly.
+            TimeSpan ageSpan = today - birthDate;
+
+            // TODO 15: work out the age in whole years from the TimeSpan and
+            //          store it in an int called years.
+            //          ageSpan.TotalDays / 365.25 gives a decimal number of
+            //          years — cast it to int to drop the fraction.
+            int years = (int)(ageSpan.TotalDays / 365.25);
+
+            // TODO 16: print your birth date, today's date, your age in
+            //          years, and your birth date plus 10 days.
+            Console.WriteLine($"Birth date : {birthDate.ToString("yyyy-MM-dd")}");
+            Console.WriteLine($"Today      : {today.ToString("yyyy-MM-dd")}");
+            Console.WriteLine($"Total days : {(int)ageSpan.TotalDays}");
+            Console.WriteLine($"Age        : {years} years");
+            Console.WriteLine($"Birth + 10 days : {birthDate.AddDays(10).ToString("yyyy-MM-dd")}");
+
+            // ---- Task 6: List<T> and Dictionary<K,V> ----
+            List<string> fruits = new() { "Apple", "Mango", "Banana" };
+
+            // TODO 17: add one more fruit to the end of the list.
+            fruits.Add("Orange");
+
+            // TODO 18: remove one fruit from the list.
+            fruits.Remove("Mango");
+
+            // TODO 19: print every remaining fruit on its own line using a
+            //          foreach loop.
+            foreach (string fruit in fruits)
+            {
+                Console.WriteLine($"  {fruit}");
+            }
+
+            // TODO 20: declare a Dictionary<int, string> called byId whose
+            //          keys are 1, 2 and 3 and whose values are fruit names.
+            Dictionary<int, string> byId = new Dictionary<int, string>
+            {
+                { 1, "Apple" },
+                { 2, "Mango" },
+                { 3, "Banana" }
+            };
+
+            // TODO 21: add a fourth entry, then print every key-value pair
+            //          using a foreach loop over the dictionary.
+            byId.Add(4, "Orange");
+
+            foreach (KeyValuePair<int, string> pair in byId)
+            {
+                Console.WriteLine($"  {pair.Key} - {pair.Value}");
+            }
+
+        }
+    }
+}
